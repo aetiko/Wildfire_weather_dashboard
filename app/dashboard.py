@@ -26,7 +26,7 @@ col1, col2 = st.columns([2, 1])
 with col1:
     fig1 = px.line(df_fwi_filtered, x="time", y=["Temperature (°C)", "Wind Speed (km/h)"],
                    title="Temperature & Wind Speed Over Time",
-                   labels={"WWD": "Wildfire Weather Dashboard"})
+                   labels={"WWD": "Wildfire Weather"})
     st.plotly_chart(fig1, use_container_width=True)
 
     fig2 = px.scatter(df_fwi_filtered, x="Humidity (%)", y="Precipitation (mm)",
@@ -38,3 +38,14 @@ with col2:
     st.success("✅ Data updates in real-time!")
 
 st.info("💡 This dashboard integrates **real-time analytics** for wildfire risk monitoring.")
+
+st.markdown("### 📊 Power BI Wildfire Analysis")
+
+POWER_BI_EMBED_URL = "https://app.powerbi.com/reportEmbed?reportId=fbf4f7e4-cf7d-4048-9da4-dc5fa55e4de0&autoAuth=true&ctid=244e6ed2-339a-47f3-b95c-e45351c198b7"
+
+st.markdown(
+    f'<iframe width="1000" height="600" src="{POWER_BI_EMBED_URL}" frameborder="0" allowFullScreen="true"></iframe>',
+    unsafe_allow_html=True
+)
+
+st.success("✅ This dashboard integrates real-time updates from Streamlit with rich analytics from Power BI!")
