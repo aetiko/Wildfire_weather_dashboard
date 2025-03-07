@@ -1,0 +1,7 @@
+[theme]
+base="light"  # Options: "light" or "dark"
+primaryColor="#E63946"  # Red color for primary elements
+backgroundColor="#F1FAEE"  # Light background
+secondaryBackgroundColor="#A8DADC"  # Soft blue for sidebar
+textColor="#1D3557"  # Dark blue text for readability
+font="sans serif"  # Options: "sans serif", "serif", "monospace"

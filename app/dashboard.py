@@ -11,7 +11,8 @@ df_fwi = pd.read_csv("data/fwi_calculations/fwi_results.csv")
 df_fwi["time"] = pd.to_datetime(df_fwi["time"])
 
 # ✅ Sidebar Filters
-st.sidebar.header("Filter Data")
+st.sidebar.image("assets/4.png", width=150)
+st.sidebar.header("🔥 Wildfire Risk Dashboard")
 date_filter = st.sidebar.date_input("Select Date", df_fwi["time"].min())
 
 # ✅ Filter by date
