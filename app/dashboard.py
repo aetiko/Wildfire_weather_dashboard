@@ -4,21 +4,21 @@ import plotly.express as px
 
 st.set_page_config(page_title="Wildfire Weather Dashboard", layout="wide")
 
-# ✅ Load Data
+#  Load Data
 df_fwi = pd.read_csv("data/fwi_calculations/fwi_results.csv")
 
-# ✅ Convert time column to datetime
+#  Convert time column to datetime
 df_fwi["time"] = pd.to_datetime(df_fwi["time"])
 
-# ✅ Sidebar Filters
+#  Sidebar Filters
 st.sidebar.image("assets/4.png", width=150)
 st.sidebar.header("🔥 Wildfire Risk Dashboard")
 date_filter = st.sidebar.date_input("Select Date", df_fwi["time"].min())
 
-# ✅ Filter by date
+#  Filter by date
 df_fwi_filtered = df_fwi[df_fwi["time"].dt.date >= date_filter]
 
-# ✅ Layout
+#  Layout
 st.title("🔥 Wildfire Weather Dashboard")
 
 col1, col2 = st.columns([2, 1])
@@ -34,12 +34,12 @@ with col1:
     st.plotly_chart(fig2, use_container_width=True)
 
 with col2:
-    st.metric(label="🔥 Avg Fire Weather Index", value=round(df_fwi_filtered["FWI"].mean(), 2))
-    st.success("✅ Data updates in real-time!")
+    st.metric(label=" Avg Fire Weather Index", value=round(df_fwi_filtered["FWI"].mean(), 2))
+    st.success(" Data updates in real-time!")
 
 st.info("💡 This dashboard integrates **real-time analytics** for wildfire risk monitoring.")
 
-st.markdown("### 📊 Power BI Wildfire Analysis")
+st.markdown("###  Power BI Wildfire Analysis")
 
 POWER_BI_EMBED_URL = "https://app.powerbi.com/reportEmbed?reportId=fbf4f7e4-cf7d-4048-9da4-dc5fa55e4de0&autoAuth=true&ctid=244e6ed2-339a-47f3-b95c-e45351c198b7"
 
@@ -48,4 +48,4 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.success("✅ This dashboard integrates real-time updates from Streamlit with rich analytics from Power BI!")
+st.success(" This dashboard integrates real-time updates from Streamlit with rich analytics from Power BI!")
