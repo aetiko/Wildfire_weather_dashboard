@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-st.set_page_config(page_title="🔥 Wildfire Risk Dashboard", layout="wide")
+st.set_page_config(page_title="Wildfire Weather Dashboard", layout="wide")
 
 # ✅ Load Data
 df_fwi = pd.read_csv("data/fwi_calculations/fwi_results.csv")
@@ -19,14 +19,14 @@ date_filter = st.sidebar.date_input("Select Date", df_fwi["time"].min())
 df_fwi_filtered = df_fwi[df_fwi["time"].dt.date >= date_filter]
 
 # ✅ Layout
-st.title("🔥 Wildfire Risk Dashboard")
+st.title("🔥 Wildfire Weather Dashboard")
 
 col1, col2 = st.columns([2, 1])
 
 with col1:
-    fig1 = px.line(df_fwi_filtered, x="time", y="FWI",
-                   title="Fire Weather Index Over Time",
-                   labels={"FWI": "Fire Weather Index"})
+    fig1 = px.line(df_fwi_filtered, x="time", y=["Temperature (°C)", "Wind Speed (km/h)"],
+                   title="Temperature & Wind Speed Over Time",
+                   labels={"WWD": "Wildfire Weather Dashboard"})
     st.plotly_chart(fig1, use_container_width=True)
 
     fig2 = px.scatter(df_fwi_filtered, x="Humidity (%)", y="Precipitation (mm)",
