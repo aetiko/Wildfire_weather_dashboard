@@ -1,0 +1,31 @@
+name: Update Data Daily
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.13.1'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Data Fetch Script
+        run: python scripts/fetch_weather.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.email "nurudeenetiko12@gmail.com"
+          git config --global user.name "aetiko"
+          git add data/raw/weather_data.csv
+          git commit -m "Auto-update weather data"
+          git push
